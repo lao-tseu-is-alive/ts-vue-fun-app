@@ -42,7 +42,8 @@ svg {
   <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" :width="svgWidth" :height="svgHeight"
     id="svgpoint" :viewBox="svgViewBox">
     <line id="axex" class="black-line-thick" x1="0" :y1="svgCenterY" :x2="svgWidth" :y2="svgCenterY" />
-    <path id="axexarrow" class="black-fill" d="M500 245 L500 255 L520 250 Z" />
+    <path id="axexarrow2" class="black-fill" d="M500 245 L500 255 L520 250 Z" />
+    <path id="axexarrow" class="black-fill" :d="`M${svgHeight} ${svgCenterY - 5} L${svgHeight} 30 L${svgCenterY} 10 Z`"/>
     <template v-for="n in (Math.round((svgMaxScale / svgTick)) - 1)" v-bind:key="n">
       <path id="axexoneunit" class="black-line-thin" :d="`M${svgCenterX + ((n) * svgTick * svgScale)} 245
                    L${svgCenterX + ((n) * svgTick * svgScale)} 255 `" />

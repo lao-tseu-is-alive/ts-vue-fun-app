@@ -9,10 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "ts-simple-2d-geometry": "^0.0.6",
     "vue": "^3.4.31"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
+    "prettier": "^3.3.3",
     "typescript": "^5.2.2",
     "vite": "^5.3.4",
     "vue-tsc": "^2.0.24"

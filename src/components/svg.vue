@@ -13,7 +13,7 @@ svg {
 
 .black-line-thick {
   stroke: #222222;
-  stroke-width: 3px;
+  stroke-width: 2px;
   fill: none;
 }
 
@@ -41,12 +41,11 @@ svg {
 <template>
   <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" :width="svgWidth" :height="svgHeight"
     id="svgpoint" :viewBox="svgViewBox">
-    <line id="axex" class="black-line-thick" x1="0" :y1="svgCenterY" :x2="svgWidth" :y2="svgCenterY" />
-    <path id="axexarrow2" class="black-fill" d="M500 245 L500 255 L520 250 Z" />
-    <path id="axexarrow" class="black-fill" :d="`M${svgHeight} ${svgCenterY - 5} L${svgHeight} 30 L${svgCenterY} 10 Z`"/>
+    <line id="axex" class="black-line-thick" x1="0" :y1="svgCenterY" :x2="`${svgWidth-10}`" :y2="svgCenterY" />
+    <path id="axexarrow" class="black-fill" :d="`M${svgWidth - 30} ${svgCenterY - 5} L${svgWidth - 30} ${svgCenterY + 5} L${svgWidth - 10} ${svgCenterY} Z`"/>
     <template v-for="n in (Math.round((svgMaxScale / svgTick)) - 1)" v-bind:key="n">
-      <path id="axexoneunit" class="black-line-thin" :d="`M${svgCenterX + ((n) * svgTick * svgScale)} 245
-                   L${svgCenterX + ((n) * svgTick * svgScale)} 255 `" />
+      <path id="axexoneunit" class="black-line-thin" :d="`M${svgCenterX + ((n) * svgTick * svgScale)} ${svgCenterY - 5}
+                   L${svgCenterX + ((n) * svgTick * svgScale)} ${svgCenterY + 5} `" />
       <g font-size="12" font-family="sans-serif" fill="black" stroke="none" text-anchor="middle">
         <text :x="svgCenterX + ((n) * svgTick * svgScale)" y="250" dx="-25" dy="0"
           :transform="`rotate(270, ${svgCenterX + ((n) * svgTick * svgScale)}, 250 )`">
@@ -55,7 +54,7 @@ svg {
       </g>
     </template>
     <line id="axey" class="black-line-thick" :x1="svgCenterX" y1="15" :x2="svgCenterX" y2="490" />
-    <path id="axeyarrow" class="black-fill" :d="`M${svgCenterX - 5} 30 L${svgCenterX + 5} 30 L250 10 Z`" />
+    <path id="axeyarrow" class="black-fill" :d="`M${svgCenterX - 5} 30 L${svgCenterX + 5} 30 L${svgCenterX} 10 Z`" />
     <template v-for="n in (Math.round((svgMaxScale / svgTick)) - 1)" v-bind:key="n">
       <path id="axexoneunit" class="black-line-thin" :d="`M${svgCenterX - 10} ${svgCenterY - ((n) * svgTick * svgScale)}
                    L${svgCenterX + 10} ${svgCenterY - ((n) * svgTick * svgScale)}`" />
@@ -79,8 +78,8 @@ svg {
 import { reactive, ref, computed, defineProps } from 'vue'
 import { Point } from 'ts-simple-2d-geometry';
 // SVG DATA
-const svgWidth = ref(500);
-const svgHeight = ref(500);
+const svgWidth = ref(600);
+const svgHeight = ref(600);
 const props = defineProps<{
   pname?: string,
   px: number,

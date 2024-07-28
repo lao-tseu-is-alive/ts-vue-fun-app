@@ -10,7 +10,7 @@ import { ref } from 'vue';
 import mysvg from './components/svg.vue'
 
 const pointName=ref("P1")
-const px=ref(2)
-const py=ref(3)
+const px=ref(5)
+const py=ref(36)
 
 </script>

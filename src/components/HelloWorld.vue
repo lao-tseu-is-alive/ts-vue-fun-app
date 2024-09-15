@@ -6,7 +6,7 @@
     >
       <v-row>
         <v-col cols="12">
-          <point-svg :pname="pointName" :px="pointX" :py="pointY"/>
+          <point-view :pname="pointName" :px="pointX" :py="pointY"/>
         </v-col>
       </v-row>
       <v-row>
@@ -20,6 +20,7 @@
         <v-col cols="4">
           <v-text-field
             label="Point X"
+            type="number"
             v-model="pointX"
             clearable
           />
@@ -27,6 +28,7 @@
         <v-col cols="4">
           <v-text-field
             label="Point Y"
+            type="number"
             v-model="pointY"
             clearable
           />
@@ -37,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import  PointSvg from '@/components/svg.vue'
+import  PointView from '@/components/PointView.vue'
 import { ref } from 'vue'
 
 const pointName = ref('A')

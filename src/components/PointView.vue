@@ -159,6 +159,36 @@ const svgPointY = computed((): number => {
   return Math.round(svgHeight.value / 2) - (svgScale.value * point.y);
 });
 
+ // ####### watch
+    // watch for parent change on property px
+    watch(() => props.px, (val, oldVal) => {
+      console.log(`IN WATCH px now: ${val},  before: ${oldVal}`);
+      if ((val !== undefined) && (val !== oldVal)) {
+        point.x = +val;
+      }
+    });
+    // watch for parent change on property py
+    watch(() => props.py, (val, oldVal) => {
+      console.log(`IN WATCH py now: ${val},  before: ${oldVal}`);
+      if ((val !== undefined) && (val !== oldVal)) {
+        point.y = +val;
+      }
+    });
+    // watch for parent change on property pName
+    watch(() => props.pname, (val, oldVal) => {
+      // remove spaces from name
+      const trimVal: string = String(`${val}`)
+        .trim();
+      const trimOldVal: string = String(`${oldVal}`)
+        .trim();
+      console.log(`IN WATCH pName now:'${val}', before:'${oldVal}'`);
+      if ((val !== undefined) && (trimVal !== trimOldVal)) {
+        point.name = trimVal;
+      } else {
+        console.log(`IN WATCH pName -> NOTHING TO DO ! (spaces ignored) val.trim():'${trimVal}',  before:'${trimOldVal}'`);
+      }
+    });
+
 // ####### methods
 
 const svgTickDisplay = (tick: number, n: number): string => {

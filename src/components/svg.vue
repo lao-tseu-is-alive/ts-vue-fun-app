@@ -75,7 +75,7 @@ svg {
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, computed, defineProps } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import { Point } from 'ts-simple-2d-geometry';
 // SVG DATA
 const svgWidth = ref(600);
